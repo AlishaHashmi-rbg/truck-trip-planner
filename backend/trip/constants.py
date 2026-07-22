@@ -1,0 +1,12 @@
+# Geoapify API Endpoints
+FUEL_INTERVAL_MILES = 1000
+FUEL_STOP_DURATION = 0.5   # 30 minutes
+
+PICKUP_DURATION = 1
+DROPOFF_DURATION = 1
+MAX_DRIVING_HOURS = 11
+MAX_ON_DUTY_HOURS = 14
+REQUIRED_BREAK_HOURS = 10
+BREAK_AFTER_HOURS = 8
+GEOAPIFY_GEOCODING_URL = "https://api.geoapify.com/v1/geocode/search"
+GEOAPIFY_ROUTING_URL = "https://api.geoapify.com/v1/routing"
