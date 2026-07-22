@@ -25,7 +25,7 @@ load_dotenv(BASE_DIR / ".env")
 SECRET_KEY = 'django-insecure-u+0q0^xbir*m7vy2%r%k@qc4di=d^iszi(6&bfx2b=&lm97vx0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -49,6 +49,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware', 
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -151,3 +152,11 @@ REST_FRAMEWORK = {
         "trip.exceptions.custom_exception_handler"
 
 }
+ALLOWED_HOSTS = [
+    "your-app-name.onrender.com",
+    "localhost",
+    "127.0.0.1"
+]
+CORS_ALLOWED_ORIGINS = [
+    "https://truck-trip-planner-alpha.vercel.app"
+]
