@@ -153,10 +153,13 @@ REST_FRAMEWORK = {
 
 }
 ALLOWED_HOSTS = [
-    "your-app-name.onrender.com",
+    "https://truck-trip-planner-2lcd.onrender.com",
     "localhost",
     "127.0.0.1"
 ]
 CORS_ALLOWED_ORIGINS = [
     "https://truck-trip-planner-alpha.vercel.app"
+]
+CSRF_TRUSTED_ORIGINS = [
+    "https://truck-trip-planner-alpha.vercel.app",
 ]
