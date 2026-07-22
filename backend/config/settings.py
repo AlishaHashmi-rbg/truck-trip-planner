@@ -153,7 +153,7 @@ REST_FRAMEWORK = {
 
 }
 ALLOWED_HOSTS = [
-    "https://truck-trip-planner-2lcd.onrender.com",
+    "truck-trip-planner-2lcd.onrender.com",
     "localhost",
     "127.0.0.1"
 ]
