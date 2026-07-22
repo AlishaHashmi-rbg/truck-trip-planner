@@ -25,6 +25,9 @@ function TripForm({
   const [cycleUsed, setCycleUsed] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
+  const API_URL =
+    import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
+
   const generateTrip = async () => {
     if (
       !currentLocation ||
@@ -42,7 +45,7 @@ function TripForm({
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/trips/generate/",
+        `${API_URL}/api/trips/generate/`,
         {
           current_location: currentLocation,
           pickup_location: pickupLocation,
@@ -52,6 +55,7 @@ function TripForm({
       );
 
       setTrip(response.data.trip);
+
     } catch (error: any) {
       if (error.response?.data?.error) {
         setError(error.response.data.error);
@@ -89,7 +93,9 @@ function TripForm({
 
           <input
             value={currentLocation}
-            onChange={(e) => setCurrentLocation(e.target.value)}
+            onChange={(e) =>
+              setCurrentLocation(e.target.value)
+            }
             placeholder="Enter complete current location e.g place, city, country."
             className="w-full rounded-xl border border-slate-300 px-4 py-3 transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none"
           />
@@ -103,7 +109,9 @@ function TripForm({
 
           <input
             value={pickupLocation}
-            onChange={(e) => setPickupLocation(e.target.value)}
+            onChange={(e) =>
+              setPickupLocation(e.target.value)
+            }
             placeholder="Enter complete pickup location e.g place, city, country."
             className="w-full rounded-xl border border-slate-300 px-4 py-3 transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none"
           />
@@ -117,14 +125,15 @@ function TripForm({
 
           <input
             value={dropoffLocation}
-            onChange={(e) => setDropoffLocation(e.target.value)}
+            onChange={(e) =>
+              setDropoffLocation(e.target.value)
+            }
             placeholder="Enter complete dropoff location e.g place, city, country."
             className="w-full rounded-xl border border-slate-300 px-4 py-3 transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none"
           />
         </div>
 
         <div>
-
           <label className="flex items-center gap-2 mb-2 font-medium text-slate-700">
             <Truck className="w-5 h-5 text-blue-600" />
             Current Cycle Used (Hours)
@@ -135,7 +144,9 @@ function TripForm({
             min="0"
             max="70"
             value={cycleUsed}
-            onChange={(e) => setCycleUsed(e.target.value)}
+            onChange={(e) =>
+              setCycleUsed(e.target.value)
+            }
             placeholder="Example: 5"
             className="w-full rounded-xl border border-slate-300 px-4 py-3 transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none"
           />
@@ -143,7 +154,6 @@ function TripForm({
           <p className="mt-2 text-sm text-slate-500">
             Enter the number of hours already used in the current 70-hour duty cycle.
           </p>
-
         </div>
 
         <button
@@ -151,7 +161,9 @@ function TripForm({
           onClick={generateTrip}
           className="w-full rounded-xl bg-blue-600 py-3 font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-slate-400"
         >
-          {submitting ? "Generating Trip..." : "Generate Trip"}
+          {submitting
+            ? "Generating Trip..."
+            : "Generate Trip"}
         </button>
 
       </div>
